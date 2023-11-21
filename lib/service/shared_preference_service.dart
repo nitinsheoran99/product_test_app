@@ -21,7 +21,7 @@ class SharedPrefService {
     sf.setBool(productKey, isList);
   }
 
-  static Future<bool> getProduct() async {
+  static Future<bool>  getProduct() async {
     SharedPreferences sf = await SharedPreferences.getInstance();
     bool value = sf.getBool(productKey) ?? true;
     return value;
@@ -46,8 +46,5 @@ class SharedPrefService {
     prefs.setStringList('likedProducts', likedProducts);
   }
 
-// static Future<List<String>> getLikedProducts() async {
-//   SharedPreferences prefs = await SharedPreferences.getInstance();
-//   return prefs.getStringList('likedProducts') ?? [];
-// }
+
 }
