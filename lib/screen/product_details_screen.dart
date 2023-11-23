@@ -47,8 +47,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   void initState() {
     likedProducts();
-    unlikedProducts();
-    likedCount();
+
     super.initState();
   }
   @override
@@ -64,33 +63,36 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
 
-          children: [
-            Image.network(widget.productModel.images!.first.toString()),
-            ListTile(
+            children: [
+              Image.network(widget.productModel.images!.first.toString()),
+              ListTile(
 
-              title: Text(widget.productModel.title.toString()),
-              subtitle: Text("\$${widget.productModel.price.toString()}"),
-              trailing: IconButton(onPressed: (){
-                setState(() {
-
-                });
-                unlikedProducts();
-                likedCount();
-                SharedPrefService.setProduct(isLiked);
-                SharedPrefService.updateLikedProducts(widget.productModel, isLiked);
-
-              }, icon: Icon(
-                isLiked ? Icons.thumb_up_alt_outlined :
-                Icons.thumb_up,color: Colors.red,))
-            ),
-            Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: Text(widget.productModel.description.toString()),
-            ),
-          ],
+                title: Text(widget.productModel.title.toString()),
+                subtitle: Text("\$${widget.productModel.price.toString()}"),
+                  trailing: IconButton(
+                    onPressed: () async {
+                      setState(() {});
+                      unlikedProducts();
+                      likedCount();
+                      SharedPrefService.setProduct(isLiked);
+                      SharedPrefService.updateLikedProducts(widget.productModel, isLiked);
+                    },
+                    icon: Icon(
+                      isLiked ? Icons.thumb_up_alt_outlined : Icons.thumb_up,
+                      color: Colors.red,
+                    ),
+                  )
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Text(widget.productModel.description.toString()),
+              ),
+            ],
+          ),
         ),
       ),
     );

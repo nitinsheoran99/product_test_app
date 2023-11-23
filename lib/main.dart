@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:product_test_app/screen/login_screen.dart';
 import 'package:product_test_app/screen/product_screen.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ProductScreen(),
+      home: LoginScreen(),
     );
   }
 }

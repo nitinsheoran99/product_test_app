@@ -35,7 +35,10 @@ class _ProductScreenState extends State<ProductScreen> {
       appBar: AppBar(
         title: const Text('Product'),
       ),
-      body: ListView.builder(
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, mainAxisSpacing: 12,crossAxisSpacing: 8
+        ),
         itemCount: productList.length,
         itemBuilder: (context, index) {
           Products productModel = productList[index];
@@ -50,7 +53,7 @@ class _ProductScreenState extends State<ProductScreen> {
               child: Card(
                 surfaceTintColor: Colors.white,
                 color: Colors.white,
-                elevation: 12,
+                elevation: 6,
                 child: Column(
                   children: [
                     Image.network(
